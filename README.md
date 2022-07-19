@@ -16,9 +16,11 @@ const fs = require('fs')
 const {REST} = require('@discordjs/rest')
 const {Routes} = require('discord-api-types/v10')
 const client = new Discord.Client({intents: [Intents.FLAGS.GUILD, Intents.FLAGS.GUILD_MESSAGES, Intents.Flags.GUILD_MEMBERS, Intents.FLAGS.DIRECT_MESSAGES] })
+
 // // // // // // // // // // // 
 // Commands folder is src/cmds/
 // // // // // // // // // // // 
+
 // // // // // // // // // // //
 // Getting and Loading commands
 // // // // // // // // // // //

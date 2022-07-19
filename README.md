@@ -7,7 +7,6 @@ This code example will show you how to register multiple slash commands against 
 If you need to know more about the functions in Discord JS go to the offical Discord JS Website https://discord.js.org/#/docs/discord.js/main/general/welcome
 
 <details><summary>Registering Slash Commands</summary>
-<p>
 
 ```javascript
 const Discord = require('discord.js')
@@ -88,28 +87,4 @@ client.on('interactionCreate', async interaction => {
 // // // // // // // // // // // // //
 // End Of Getting and Loading Commands
 // // // // // // // // // // // // //
-</p>
 </details>
-
-
-    <details><summary>Basic Slash Command</summary>
-    <p>
-
-    ```javascript
-    const {SlashCommandBuilder} = require('@discordjs/builders')
-    const {Interaction} = require('discord.js')
-
-    module.exports = {
-      data: new SlashCommandBuilder()
-          .setName('ping')
-          .setDescription('Replies with pong'),
-          /**
-          * @param {Interaction} interaction
-          */
-        async execute(interaction) {
-          interaction.reply({content: 'Pong!', ephermal: true}) // Ephermal only shows the reply to the user that ran the command
-      }
-    }
-    ```
-    </p>
-    </details>

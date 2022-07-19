@@ -94,6 +94,7 @@ client.on('interactionCreate', async interaction => {
 <details><summary>Basic Slash Command</summary>
 <p>
 
+```javascript
 const {SlashCommandBuilder} = require('@discordjs/builders')
 const {Interaction} = require('discord.js')
 
@@ -108,6 +109,6 @@ module.exports = {
       interaction.reply({content: 'Pong!', ephermal: true}) // Ephermal only shows the reply to the user that ran the command
   }
 }
-
+```
 </p>
 </details>

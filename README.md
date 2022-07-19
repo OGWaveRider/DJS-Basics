@@ -8,6 +8,14 @@ If you need to know more about the functions in Discord JS go to the offical Dis
 
 DJS also has a discord check it out https://discord.gg/djs
 
+To install all necessary dependencies run these commands in your terminal: 
+```
+npm install discord.js 
+npm install @discordjs/rest
+npm install discord-api-types
+npm install fs
+```
+
 <details><summary>Registering Slash Commands</summary>
 <p>
 

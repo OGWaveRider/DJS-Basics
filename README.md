@@ -8,7 +8,7 @@ If you need to know more about the functions in Discord JS go to the offical Dis
 
 <details>
     <summary>Registering Slash Commands</summary>
-
+    <p>
     ```javascript
     const Discord = require('discord.js')
     const {Intents, Collection} = require('discord.js')
@@ -88,12 +88,13 @@ If you need to know more about the functions in Discord JS go to the offical Dis
     // // // // // // // // // // // // //
     // End Of Getting and Loading Commands
     // // // // // // // // // // // // //
+    </p>
 </details>
 
 
 <details>
     <summary>Basic Slash Command</summary>
-
+    <p>
     ```javascript
     const {SlashCommandBuilder} = require('@discordjs/builders')
     const {Interaction} = require('discord.js')
@@ -110,4 +111,5 @@ If you need to know more about the functions in Discord JS go to the offical Dis
       }
     }
     ```
+    </p>
 </details>

@@ -91,24 +91,25 @@ client.on('interactionCreate', async interaction => {
 </p>
 </details>
 
-<details><summary>Basic Slash Command</summary>
-<p>
 
-```javascript
-const {SlashCommandBuilder} = require('@discordjs/builders')
-const {Interaction} = require('discord.js')
+    <details><summary>Basic Slash Command</summary>
+    <p>
 
-module.exports = {
-  data: new SlashCommandBuilder()
-      .setName('ping')
-      .setDescription('Replies with pong'),
-      /**
-      * @param {Interaction} interaction
-      */
-    async execute(interaction) {
-      interaction.reply({content: 'Pong!', ephermal: true}) // Ephermal only shows the reply to the user that ran the command
-  }
-}
-```
-</p>
-</details>
+    ```javascript
+    const {SlashCommandBuilder} = require('@discordjs/builders')
+    const {Interaction} = require('discord.js')
+
+    module.exports = {
+      data: new SlashCommandBuilder()
+          .setName('ping')
+          .setDescription('Replies with pong'),
+          /**
+          * @param {Interaction} interaction
+          */
+        async execute(interaction) {
+          interaction.reply({content: 'Pong!', ephermal: true}) // Ephermal only shows the reply to the user that ran the command
+      }
+    }
+    ```
+    </p>
+    </details>

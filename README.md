@@ -10,7 +10,7 @@ DJS also has a discord check it out https://discord.gg/djs
 
 To install all necessary dependencies run these commands in your terminal: 
 ```
-npm install discord.js 
+npm install discord.js@13.8.1
 npm install @discordjs/rest
 npm install discord-api-types
 npm install fs

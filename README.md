@@ -12,6 +12,11 @@ DJS also has a discord check it out https://discord.gg/djs
 <p>
 
 ```javascript
+
+// // // // // //
+// src/index.js
+// // // // // //
+
 const Discord = require('discord.js')
 const {Intents, Collection} = require('discord.js')
 const fs = require('fs')

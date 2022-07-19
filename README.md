@@ -6,6 +6,8 @@ This code example will show you how to register multiple slash commands against 
 
 If you need to know more about the functions in Discord JS go to the offical Discord JS Website https://discord.js.org/#/docs/discord.js/main/general/welcome
 
+DJS also has a discord check it out https://discord.gg/djs
+
 <details><summary>Registering Slash Commands</summary>
 <p>
 
@@ -43,7 +45,7 @@ if (files.length > 0) {
 client.once("ready", () => {
     const CLIENT_ID = client.user.id;
     const GUILD_ID = 'YOUR GUILD ID'
-    const rest = new REST({version: '10'}).setToken(YOUR BOT TOKEN);
+    const rest = new REST({version: '10'}).setToken('YOUR BOT TOKEN');
     (async () => {
         try {
           if (process.env.ENV === "production") {
@@ -76,6 +78,9 @@ client.on('interactionCreate', async interaction => {
 // // // // // // // // // // // // //
 // End Of Getting and Loading Commands
 // // // // // // // // // // // // //
+
+client.login('YOUR BOT TOKEN')
+
 ```
 </p>
 </details>
@@ -84,6 +89,11 @@ client.on('interactionCreate', async interaction => {
 <p>
 
 ```javascript
+
+// // // // // // // // // // // // // // // // // //
+// This command's directory would be src/cmds/ping.js
+// // // // // // // // // // // // // // // // // //
+
 const {SlashCommandBuilder} = require('@discordjs/builders')
 const {Interaction} = require('discord.js')
 

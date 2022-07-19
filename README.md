@@ -74,5 +74,6 @@ client.on('interactionCreate', async interaction => {
 // // // // // // // // // // // // //
 // End Of Getting and Loading Commands
 // // // // // // // // // // // // //
+```
 </p>
 </details>

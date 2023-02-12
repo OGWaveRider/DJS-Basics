@@ -1,18 +1,16 @@
 # DJS-Basics
 
-Basics for DJS v13.8.1
+Basics for DJS latest version
 
 This code example will show you how to register multiple slash commands against the Discord API.
 
-If you need to know more about the functions in Discord JS go to the offical Discord JS Website https://discord.js.org/#/docs/discord.js/main/general/welcome
+For more about the functions in Discord JS go to the offical Discord JS Website https://discord.js.org/#/docs/discord.js/main/general/welcome
 
 DJS also has a discord check it out https://discord.gg/djs
 
 To install all necessary dependencies run these commands in your terminal: 
 ```
-npm install discord.js@13.8.1
-npm install @discordjs/rest
-npm install discord-api-types
+npm install discord.js
 npm install fs
 ```
 
@@ -25,12 +23,9 @@ npm install fs
 // src/index.js
 // // // // // //
 
-const Discord = require('discord.js')
-const {Intents, Collection} = require('discord.js')
+const {GatewayIntentBits, Collection, REST, Routes, Client} = require('discord.js')
 const fs = require('fs')
-const {REST} = require('@discordjs/rest')
-const {Routes} = require('discord-api-types/v10')
-const client = new Discord.Client({intents: [Intents.FLAGS.GUILD, Intents.FLAGS.GUILD_MESSAGES, Intents.Flags.GUILD_MEMBERS, Intents.FLAGS.DIRECT_MESSAGES] })
+const client = new Discord.Client({intents: [GatewayIntentBits.Guilds] })
 
 // // // // // // // // // // // 
 // Commands folder is src/cmds/
@@ -40,53 +35,41 @@ const client = new Discord.Client({intents: [Intents.FLAGS.GUILD, Intents.FLAGS.
 // Getting and Loading commands
 // // // // // // // // // // //
 folder = `${__dirname}/cmds/`
+console.log("Loading commands...")
 const cmds = []
-const files = fs.readdirSync(folder)
-files.filter(f => fs.statSync(folder + f).isDirectory())
-    .forEach(nested => fs.readdirSync(folder + nested).forEach(f => files.push(nested + '/' + f)));
+const commandFiles = fs.readdirSync(folder)
+commandFiles.filter(f => fs.statSync(folder + f).isDirectory())
+    .forEach(nested => fs.readdirSync(folder + nested).forEach(f => commandFiles.push(nested + '/' + f)));
+
 client.cmds = new Collection()
-const commandsFiles = files.filter(f => f.endsWith('.js'));
-if (files.length > 0) {
-    console.log(`Found ${commandsFiles.length} files to load!\n`);
-    for (const f of commandsFiles) {
+
+const cmdFiles = commandFiles.filter(f => f.endsWith('.js'));
+if (commandFiles.length > 0) {
+    console.log(`Found ${cmdFiles.length} files to load!\n`);
+    
+    for (const f of cmdFiles) {
         console.log(`Loading '${f}'...`);
         const command = require(folder + f);
         cmds.push(command.data.toJSON())
         client.cmds.set(command.data.name, command)
+
     }
 }
+
 client.once("ready", () => {
     const CLIENT_ID = client.user.id;
-    const GUILD_ID = 'YOUR GUILD ID'
-    const rest = new REST({version: '10'}).setToken('YOUR BOT TOKEN');
+    const GUILD_ID = '332997002826874882'
+    
+    const rest = new REST({version: '10'}).setToken(config.token);
+
     (async () => {
         try {
-          if (process.env.ENV === "production") {
-            await rest.put(Routes.applicationCommands(CLIENT_ID), {
-                body: cmds
-            });
-            console.log("Slash commands registered globally!")
-          } else {
-            await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
-                body: cmds
-            });
-            console.log("Slash commands registered locally!")
+              await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), { body: cmds })
+              console.log("Slash commands registered locally!")
+          } catch (e) {
+              console.error(e)
           }
-        } catch (e) {
-            // ignore
-        }
     })();
-})
-client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
-    
-    const command = client.cmds.get(interaction.commandName);
-    if (!command) return;
-    try {
-        await command.execute(interaction);
-    } catch (e) {
-        // ignore
-    }
 })
 // // // // // // // // // // // // //
 // End Of Getting and Loading Commands
@@ -107,8 +90,7 @@ client.login('YOUR BOT TOKEN')
 // This command's directory would be src/cmds/ping.js
 // // // // // // // // // // // // // // // // // //
 
-const {SlashCommandBuilder} = require('@discordjs/builders')
-const {Interaction} = require('discord.js')
+const {SlashCommandBuilder, Interaction} = require('discord.js')
 
 module.exports = {
   data: new SlashCommandBuilder()

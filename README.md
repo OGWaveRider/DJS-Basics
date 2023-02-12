@@ -58,9 +58,9 @@ if (commandFiles.length > 0) {
 
 client.once("ready", () => {
     const CLIENT_ID = client.user.id;
-    const GUILD_ID = '332997002826874882'
+    const GUILD_ID = 'YOUR GUILD ID'
     
-    const rest = new REST({version: '10'}).setToken(config.token);
+    const rest = new REST({version: '10'}).setToken('YOUR BOT TOKEN');
 
     (async () => {
         try {

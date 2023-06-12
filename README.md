@@ -4,7 +4,7 @@ Basics for DJS latest version
 
 This code example will show you how to register multiple slash commands against the Discord API.
 
-For more about the functions in Discord JS go to the offical Discord JS Website https://discord.js.org/#/docs/discord.js/main/general/welcome
+For more about the functions in Discord JS go to the offical Discord JS Website [https://discord.js.org/#/docs/discord.js/main/general/welcome](https://old.discordjs.dev/#/docs/discord.js/main/general/welcome)
 
 DJS also has a discord check it out https://discord.gg/djs
 
